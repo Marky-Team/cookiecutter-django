@@ -23,7 +23,6 @@ SUCCESS = "\x1b[1;32m [SUCCESS]: "
 # from domain/email values
 """
 {{ cookiecutter.update({ "domain_name": cookiecutter.domain_name | trim }) }}
-{{ cookiecutter.update({ "email": cookiecutter.email | trim }) }}
 """
 
 project_slug = "{{ cookiecutter.project_slug }}"
@@ -32,7 +31,7 @@ if hasattr(project_slug, "isidentifier"):
 
 assert project_slug == project_slug.lower(), "'{}' project slug should be all lowercase".format(project_slug)
 
-assert "\\" not in "{{ cookiecutter.author_name }}", "Don't include backslashes in author name."
+assert "\\" not in "MyMarky, Incorporated", "Don't include backslashes in author name."
 
 if "{{ cookiecutter.use_whitenoise }}".lower() == "n" and "{{ cookiecutter.cloud_provider }}" == "None":
     print("You should either use Whitenoise or select a " "Cloud Provider to serve static files")

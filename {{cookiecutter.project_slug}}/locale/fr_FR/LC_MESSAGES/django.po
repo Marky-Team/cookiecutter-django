@@ -1,6 +1,6 @@
 # Translations for the {{ cookiecutter.project_name }} project
-# Copyright (C) {% now 'utc', '%Y' %} {{ cookiecutter.author_name }}
-# {{ cookiecutter.author_name }} <{{ cookiecutter.email }}>, {% now 'utc', '%Y' %}.
+# Copyright (C) {% now 'utc', '%Y' %} MyMarky, Incorporated
+# MyMarky, Incorporated <engineering@mymarky.ai>, {% now 'utc', '%Y' %}.
 #
 #, fuzzy
 msgid ""

@@ -18,9 +18,6 @@ project_slug:
 description:
     Describes your project and gets used in places like ``README.rst`` and such.
 
-author_name:
-    This is you! The value goes into places like ``LICENSE`` and such.
-
 email:
     The email address you want to identify yourself in the project.
 

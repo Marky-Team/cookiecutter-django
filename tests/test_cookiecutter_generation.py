@@ -33,7 +33,6 @@ def context():
     return {
         "project_name": "My Test Project",
         "project_slug": "my_test_project",
-        "author_name": "Test Author",
         "email": "test@example.com",
         "description": "A short description of the project.",
         "domain_name": "example.com",

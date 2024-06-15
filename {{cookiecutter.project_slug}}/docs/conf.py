@@ -30,8 +30,8 @@ django.setup()
 # -- Project information -----------------------------------------------------
 
 project = "{{ cookiecutter.project_name }}"
-copyright = """{% now 'utc', '%Y' %}, {{ cookiecutter.author_name }}"""
-author = "{{ cookiecutter.author_name }}"
+copyright = """{% now 'utc', '%Y' %}, MyMarky, Incorporated"""
+author = "MyMarky, Incorporated"
 
 
 # -- General configuration ---------------------------------------------------

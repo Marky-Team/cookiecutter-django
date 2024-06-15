@@ -105,7 +105,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     project_name [My Awesome Project]: Reddit Clone
     project_slug [reddit_clone]: reddit
     description [Behold My Awesome Project!]: A reddit clone.
-    author_name [Daniel Roy Greenfeld]: Daniel Greenfeld
     domain_name [example.com]: myreddit.com
     email [daniel-greenfeld@example.com]: pydanny@gmail.com
     version [0.1.0]: 0.0.1

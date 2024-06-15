@@ -10,11 +10,6 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = BASE_DIR / "{{ cookiecutter.project_slug }}"
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
-if READ_DOT_ENV_FILE:
-    # OS environment variables take precedence over variables from .env
-    env.read_env(str(BASE_DIR / ".env"))
-
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -245,7 +240,7 @@ EMAIL_TIMEOUT = 5
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""{{cookiecutter.author_name}}""", "{{cookiecutter.email}}")]
+ADMINS = [("MyMarky Engineering", "engineering@mymarky.ai")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 # https://cookiecutter-django.readthedocs.io/en/latest/settings.html#other-environment-settings
