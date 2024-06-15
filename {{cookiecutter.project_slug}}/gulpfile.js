@@ -129,18 +129,12 @@ function initBrowserSync() {
   browserSync.init(
     [`${paths.css}/*.css`, `${paths.js}/*.js`, `${paths.templates}/*.html`],
     {
-      {%- if cookiecutter.use_docker == 'y' %}
       // https://www.browsersync.io/docs/options/#option-open
       // Disable as it doesn't work from inside a container
       open: false,
-      {%- endif %}
       // https://www.browsersync.io/docs/options/#option-proxy
       proxy: {
-        {%- if cookiecutter.use_docker == 'n' %}
-        target: '127.0.0.1:8000',
-        {%- else %}
         target: 'django:8000',
-        {%- endif %}
         proxyReq: [
           function (proxyReq, req) {
             // Assign proxy 'host' header same as current request at Browsersync server
@@ -166,15 +160,7 @@ function watchPaths() {
 const generateAssets = parallel(styles, scripts, vendorScripts, imgCompression);
 
 // Set up dev environment
-{%- if cookiecutter.use_docker == 'n' %}
-{%- if cookiecutter.use_async == 'y' %}
-const dev = parallel(asyncRunServer, initBrowserSync, watchPaths);
-{%- else %}
-const dev = parallel(runServer, initBrowserSync, watchPaths);
-{%- endif %}
-{%- else %}
 const dev = parallel(initBrowserSync, watchPaths);
-{%- endif %}
 
 exports.default = series(generateAssets, dev);
 exports['generate-assets'] = generateAssets;

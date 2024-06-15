@@ -26,7 +26,6 @@ steps:
 
 - name: test
   pull: if-not-exists
-  {%- if cookiecutter.use_docker == 'y' %}
   image: docker:25.0
   environment:
     DATABASE_URL: pgsql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB
@@ -36,12 +35,6 @@ steps:
   - docker-compose -f docker-compose.local.yml run --rm django python manage.py migrate
   - docker-compose -f docker-compose.local.yml up -d
   - docker-compose -f docker-compose.local.yml run django pytest
-  {%- else %}
-  image: python:3.12
-  commands:
-  - pip install -r requirements/local.txt
-  - pytest
-  {%- endif%}
 
 volumes:
 - name: pre-commit cache

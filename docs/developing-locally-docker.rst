@@ -228,7 +228,6 @@ Celery Flower
 
 Prerequisites:
 
-* ``use_docker`` was set to ``y`` on project initialization;
 * ``use_celery`` was set to ``y`` on project initialization.
 
 By default, it's enabled both in local and production environments (``docker-compose.local.yml`` and ``docker-compose.production.yml`` Docker Compose configs, respectively) through a ``flower`` service. For added security, ``flower`` requires its clients to provide authentication credentials specified as the corresponding environments' ``.envs/.local/.django`` and ``.envs/.production/.django`` ``CELERY_FLOWER_USER`` and ``CELERY_FLOWER_PASSWORD`` environment variables. Check out ``localhost:5555`` and see for yourself.

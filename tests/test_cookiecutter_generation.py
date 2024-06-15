@@ -55,8 +55,6 @@ SUPPORTED_COMBINATIONS = [
     {"editor": "None"},
     {"editor": "PyCharm"},
     {"editor": "VS Code"},
-    {"use_docker": "y"},
-    {"use_docker": "n"},
     {"postgresql_version": "16"},
     {"postgresql_version": "15"},
     {"postgresql_version": "14"},
@@ -271,39 +269,22 @@ def test_djlint_check_passes(cookies, context_override):
 
 
 @pytest.mark.parametrize(
-    ["use_docker", "expected_test_script"],
+    ["expected_test_script"],
     [
         ("n", "pytest"),
         ("y", "docker compose -f docker-compose.local.yml run django pytest"),
     ],
 )
-def test_travis_invokes_pytest(cookies, context, use_docker, expected_test_script):
-    context.update({"ci_tool": "Travis", "use_docker": use_docker})
-    result = cookies.bake(extra_context=context)
-
-    assert result.exit_code == 0
-    assert result.exception is None
-    assert result.project_path.name == context["project_slug"]
-    assert result.project_path.is_dir()
-
-    with open(f"{result.project_path}/.travis.yml") as travis_yml:
-        try:
-            yml = yaml.safe_load(travis_yml)["jobs"]["include"]
-            assert yml[0]["script"] == ["ruff check ."]
-            assert yml[1]["script"] == [expected_test_script]
-        except yaml.YAMLError as e:
-            pytest.fail(str(e))
-
 
 @pytest.mark.parametrize(
-    ["use_docker", "expected_test_script"],
+    ["expected_test_script"],
     [
         ("n", "pytest"),
         ("y", "docker compose -f docker-compose.local.yml run django pytest"),
     ],
 )
-def test_gitlab_invokes_precommit_and_pytest(cookies, context, use_docker, expected_test_script):
-    context.update({"ci_tool": "Gitlab", "use_docker": use_docker})
+def test_gitlab_invokes_precommit_and_pytest(cookies, context, expected_test_script):
+    context.update({"ci_tool": "Gitlab"})
     result = cookies.bake(extra_context=context)
 
     assert result.exit_code == 0
@@ -323,14 +304,14 @@ def test_gitlab_invokes_precommit_and_pytest(cookies, context, use_docker, expec
 
 
 @pytest.mark.parametrize(
-    ["use_docker", "expected_test_script"],
+    ["expected_test_script"],
     [
         ("n", "pytest"),
         ("y", "docker compose -f docker-compose.local.yml run django pytest"),
     ],
 )
-def test_github_invokes_linter_and_pytest(cookies, context, use_docker, expected_test_script):
-    context.update({"ci_tool": "Github", "use_docker": use_docker})
+def test_github_invokes_linter_and_pytest(cookies, context, expected_test_script):
+    context.update({"ci_tool": "Github"})
     result = cookies.bake(extra_context=context)
 
     assert result.exit_code == 0
@@ -398,7 +379,6 @@ def test_trim_domain_email(cookies, context):
     """Check that leading and trailing spaces are trimmed in domain and email."""
     context.update(
         {
-            "use_docker": "y",
             "domain_name": "   example.com   ",
             "email": "  me@example.com  ",
         }

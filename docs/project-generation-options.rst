@@ -60,9 +60,6 @@ editor:
     2. PyCharm_
     3. `VS Code`_
 
-use_docker:
-    Indicates whether the project should be configured to use Docker_, `Docker Compose`_ and `devcontainer`_.
-
 postgresql_version:
     Select a PostgreSQL_ version to use. The choices are:
 
