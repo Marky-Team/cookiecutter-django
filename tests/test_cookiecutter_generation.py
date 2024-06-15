@@ -120,11 +120,6 @@ SUPPORTED_COMBINATIONS = [
     {"use_whitenoise": "n"},
     {"use_heroku": "y"},
     {"use_heroku": "n"},
-    {"ci_tool": "None"},
-    {"ci_tool": "Travis"},
-    {"ci_tool": "Gitlab"},
-    {"ci_tool": "Github"},
-    {"ci_tool": "Drone"},
     {"keep_local_envs_in_vcs": "y"},
     {"keep_local_envs_in_vcs": "n"},
     {"debug": "y"},
@@ -275,43 +270,7 @@ def test_djlint_check_passes(cookies, context_override):
         ("y", "docker compose -f docker-compose.local.yml run django pytest"),
     ],
 )
-
-@pytest.mark.parametrize(
-    ["expected_test_script"],
-    [
-        ("n", "pytest"),
-        ("y", "docker compose -f docker-compose.local.yml run django pytest"),
-    ],
-)
-def test_gitlab_invokes_precommit_and_pytest(cookies, context, expected_test_script):
-    context.update({"ci_tool": "Gitlab"})
-    result = cookies.bake(extra_context=context)
-
-    assert result.exit_code == 0
-    assert result.exception is None
-    assert result.project_path.name == context["project_slug"]
-    assert result.project_path.is_dir()
-
-    with open(f"{result.project_path}/.gitlab-ci.yml") as gitlab_yml:
-        try:
-            gitlab_config = yaml.safe_load(gitlab_yml)
-            assert gitlab_config["precommit"]["script"] == [
-                "pre-commit run --show-diff-on-failure --color=always --all-files"
-            ]
-            assert gitlab_config["pytest"]["script"] == [expected_test_script]
-        except yaml.YAMLError as e:
-            pytest.fail(e)
-
-
-@pytest.mark.parametrize(
-    ["expected_test_script"],
-    [
-        ("n", "pytest"),
-        ("y", "docker compose -f docker-compose.local.yml run django pytest"),
-    ],
-)
 def test_github_invokes_linter_and_pytest(cookies, context, expected_test_script):
-    context.update({"ci_tool": "Github"})
     result = cookies.bake(extra_context=context)
 
     assert result.exit_code == 0

@@ -124,15 +124,6 @@ use_heroku:
     Indicates whether the project should be configured so as to be deployable
     to Heroku_.
 
-ci_tool:
-    Select a CI tool for running tests. The choices are:
-
-    1. None
-    2. `Travis CI`_
-    3. `Gitlab CI`_
-    4. `Github Actions`_
-    5. `Drone CI`_
-
 keep_local_envs_in_vcs:
     Indicates whether the project's ``.envs/.local/`` should be kept in VCS
     (comes in handy when working in teams where local environment reproducibility

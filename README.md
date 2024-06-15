@@ -163,12 +163,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     use_sentry [n]: y
     use_whitenoise [n]: n
     use_heroku [n]: y
-    Select ci_tool:
-    1 - None
-    2 - Travis
-    3 - Gitlab
-    4 - Github
-    Choose from 1, 2, 3, 4 [1]: 4
     keep_local_envs_in_vcs [y]: y
     debug [n]: n
 
