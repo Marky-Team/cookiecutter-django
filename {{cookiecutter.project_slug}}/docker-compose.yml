@@ -4,7 +4,7 @@ volumes:
   {% if cookiecutter.use_celery == 'y' %}{{ cookiecutter.project_slug }}_local_redis_data: {}{% endif %}
 
 services:
-  django:{% if cookiecutter.use_celery == 'y' %} &django{% endif %}
+  django: &django
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
@@ -20,9 +20,17 @@ services:
       {%- endif %}
     volumes:
       - .:/app:z
-    env_file:
-      - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
+    environment:
+      IPYTHONDIR: "/app/.ipython"
+      DJANGO_SECRET_KEY: "LOCAL_INSECURE_SECRET_KEY"{%- if cookiecutter.use_celery == 'y' %}
+      REDIS_URL: "redis://redis:6379/0"
+      CELERY_FLOWER_USER: "!!!SET CELERY_FLOWER_USER!!!"
+      CELERY_FLOWER_PASSWORD: "!!!SET CELERY_FLOWER_PASSWORD!!!"{%- endif %}
+      POSTGRES_HOST: "postgres"
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: "{{ cookiecutter.project_slug }}"
+      POSTGRES_USER: "!!!SET POSTGRES_USER!!!"
+      POSTGRES_PASSWORD: "!!!SET POSTGRES_PASSWORD!!!"
     ports:
       - '8000:8000'
     command: /start
@@ -36,8 +44,27 @@ services:
     volumes:
       - {{ cookiecutter.project_slug }}_local_postgres_data:/var/lib/postgresql/data
       - {{ cookiecutter.project_slug }}_local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
+    environment:
+      POSTGRES_HOST: "postgres"
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: "{{ cookiecutter.project_slug }}"
+      POSTGRES_USER: "!!!SET POSTGRES_USER!!!"
+      POSTGRES_PASSWORD: "!!!SET POSTGRES_PASSWORD!!!"
+
+  docs:
+    <<: *django
+    image: {{ cookiecutter.project_slug }}_local_docs
+    container_name: {{ cookiecutter.project_slug }}_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./{{ cookiecutter.project_slug }}:/app/{{ cookiecutter.project_slug }}:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
 
   {%- if cookiecutter.use_mailpit == 'y' %}
 

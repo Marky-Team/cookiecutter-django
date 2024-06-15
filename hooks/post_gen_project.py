@@ -263,106 +263,10 @@ def set_flag(file_path, flag, value=None, formatted=None, *args, **kwargs):
     return value
 
 
-def set_django_secret_key(file_path):
-    django_secret_key = set_flag(
-        file_path,
-        "!!!SET DJANGO_SECRET_KEY!!!",
-        length=64,
-        using_digits=True,
-        using_ascii_letters=True,
-    )
-    return django_secret_key
-
-
-def set_django_admin_url(file_path):
-    django_admin_url = set_flag(
-        file_path,
-        "!!!SET DJANGO_ADMIN_URL!!!",
-        formatted="{}/",
-        length=32,
-        using_digits=True,
-        using_ascii_letters=True,
-    )
-    return django_admin_url
-
-
-def generate_random_user():
-    return generate_random_string(length=32, using_ascii_letters=True)
-
-
-def generate_postgres_user(debug=False):
-    return DEBUG_VALUE if debug else generate_random_user()
-
-
-def set_postgres_user(file_path, value):
-    postgres_user = set_flag(file_path, "!!!SET POSTGRES_USER!!!", value=value)
-    return postgres_user
-
-
-def set_postgres_password(file_path, value=None):
-    postgres_password = set_flag(
-        file_path,
-        "!!!SET POSTGRES_PASSWORD!!!",
-        value=value,
-        length=64,
-        using_digits=True,
-        using_ascii_letters=True,
-    )
-    return postgres_password
-
-
-def set_celery_flower_user(file_path, value):
-    celery_flower_user = set_flag(file_path, "!!!SET CELERY_FLOWER_USER!!!", value=value)
-    return celery_flower_user
-
-
-def set_celery_flower_password(file_path, value=None):
-    celery_flower_password = set_flag(
-        file_path,
-        "!!!SET CELERY_FLOWER_PASSWORD!!!",
-        value=value,
-        length=64,
-        using_digits=True,
-        using_ascii_letters=True,
-    )
-    return celery_flower_password
-
-
 def append_to_gitignore_file(ignored_line):
     with open(".gitignore", "a") as gitignore_file:
         gitignore_file.write(ignored_line)
         gitignore_file.write("\n")
-
-
-def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
-    local_django_envs_path = os.path.join(".envs", ".local", ".django")
-    production_django_envs_path = os.path.join(".envs", ".production", ".django")
-    local_postgres_envs_path = os.path.join(".envs", ".local", ".postgres")
-    production_postgres_envs_path = os.path.join(".envs", ".production", ".postgres")
-
-    set_django_secret_key(production_django_envs_path)
-    set_django_admin_url(production_django_envs_path)
-
-    set_postgres_user(local_postgres_envs_path, value=postgres_user)
-    set_postgres_password(local_postgres_envs_path, value=DEBUG_VALUE if debug else None)
-    set_postgres_user(production_postgres_envs_path, value=postgres_user)
-    set_postgres_password(production_postgres_envs_path, value=DEBUG_VALUE if debug else None)
-
-    set_celery_flower_user(local_django_envs_path, value=celery_flower_user)
-    set_celery_flower_password(local_django_envs_path, value=DEBUG_VALUE if debug else None)
-    set_celery_flower_user(production_django_envs_path, value=celery_flower_user)
-    set_celery_flower_password(production_django_envs_path, value=DEBUG_VALUE if debug else None)
-
-
-def set_flags_in_settings_files():
-    set_django_secret_key(os.path.join("config", "settings", "local.py"))
-    set_django_secret_key(os.path.join("config", "settings", "test.py"))
-
-
-def remove_envs_and_associated_files():
-    shutil.rmtree(".envs")
-    os.remove("merge_production_dotenvs_in_dotenv.py")
-    shutil.rmtree("tests")
 
 
 def remove_celery_compose_dirs():
@@ -387,15 +291,6 @@ def remove_drf_starter_files():
 
 
 def main():
-    debug = "{{ cookiecutter.debug }}".lower() == "y"
-
-    set_flags_in_envs(
-        DEBUG_VALUE if debug else generate_random_user(),
-        DEBUG_VALUE if debug else generate_random_user(),
-        debug=debug,
-    )
-    set_flags_in_settings_files()
-
     if "{{ cookiecutter.open_source_license }}" == "Not open source":
         remove_open_source_files()
     if "{{ cookiecutter.open_source_license}}" != "GPLv3":

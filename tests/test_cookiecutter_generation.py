@@ -267,7 +267,7 @@ def test_djlint_check_passes(cookies, context_override):
     ["expected_test_script"],
     [
         ("n", "pytest"),
-        ("y", "docker compose -f docker-compose.local.yml run django pytest"),
+        ("y", "docker compose -f docker-compose.yml run django pytest"),
     ],
 )
 def test_github_invokes_linter_and_pytest(cookies, context, expected_test_script):
@@ -345,9 +345,6 @@ def test_trim_domain_email(cookies, context):
     result = cookies.bake(extra_context=context)
 
     assert result.exit_code == 0
-
-    prod_django_env = result.project_path / ".envs" / ".production" / ".django"
-    assert "DJANGO_ALLOWED_HOSTS=.example.com" in prod_django_env.read_text()
 
     base_settings = result.project_path / "config" / "settings" / "base.py"
     assert '"me@example.com"' in base_settings.read_text()
