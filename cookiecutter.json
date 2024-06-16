@@ -32,6 +32,5 @@
   "frontend_pipeline": ["None", "Django Compressor", "Gulp", "Webpack"],
   "use_celery": "n",
   "use_mailpit": "n",
-  "use_whitenoise": "n",
-  "debug": "n"
+  "use_whitenoise": "n"
 }
