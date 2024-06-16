@@ -63,8 +63,6 @@ postgresql_version:
     1. 16
     2. 15
     3. 14
-    4. 13
-    5. 12
 
 cloud_provider:
     Select a cloud provider for static & media files. The choices are:
