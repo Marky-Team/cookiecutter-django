@@ -84,8 +84,6 @@ SUPPORTED_COMBINATIONS = [
     {"use_sentry": "n"},
     {"use_whitenoise": "y"},
     {"use_whitenoise": "n"},
-    {"keep_local_envs_in_vcs": "y"},
-    {"keep_local_envs_in_vcs": "n"},
     {"debug": "y"},
     {"debug": "n"},
 ]

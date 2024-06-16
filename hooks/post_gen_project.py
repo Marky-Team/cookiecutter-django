@@ -295,8 +295,6 @@ def main():
 
     append_to_gitignore_file(".env")
     append_to_gitignore_file(".envs/*")
-    if "{{ cookiecutter.keep_local_envs_in_vcs }}".lower() == "y":
-        append_to_gitignore_file("!.envs/.local/")
 
     if "{{ cookiecutter.frontend_pipeline }}" in ["None", "Django Compressor"]:
         remove_gulp_files()

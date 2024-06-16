@@ -34,6 +34,5 @@
   "use_mailpit": "n",
   "use_sentry": "n",
   "use_whitenoise": "n",
-  "keep_local_envs_in_vcs": "y",
   "debug": "n"
 }

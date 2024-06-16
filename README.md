@@ -156,7 +156,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     use_mailpit [n]: n
     use_sentry [n]: y
     use_whitenoise [n]: n
-    keep_local_envs_in_vcs [y]: y
     debug [n]: n
 
 Enter the project and take a look around:
