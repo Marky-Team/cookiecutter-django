@@ -10,6 +10,7 @@ services:
       dockerfile: compose/django/Dockerfile
     image: {{ cookiecutter.project_slug }}_local_django
     container_name: {{ cookiecutter.project_slug }}_local_django
+    working_dir: /app/
     depends_on:
       - postgres
       {%- if cookiecutter.use_celery == 'y' %}
@@ -65,6 +66,10 @@ services:
     ports:
       - '9000:9000'
     command: /start-docs
+
+  format:
+    <<: *django
+    command: black .
 
   {%- if cookiecutter.use_mailpit == 'y' %}
 
