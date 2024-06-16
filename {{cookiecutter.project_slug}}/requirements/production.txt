@@ -13,13 +13,8 @@ sentry-sdk==2.5.0  # https://github.com/getsentry/sentry-python
 
 # Django
 # ------------------------------------------------------------------------------
-{%- if cookiecutter.cloud_provider == 'AWS' %}
 django-storages[s3]==1.14.3  # https://github.com/jschneier/django-storages
-{%- elif cookiecutter.cloud_provider == 'GCP' %}
-django-storages[google]==1.14.3  # https://github.com/jschneier/django-storages
-{%- elif cookiecutter.cloud_provider == 'Azure' %}
-django-storages[azure]==1.14.3  # https://github.com/jschneier/django-storages
-{%- endif %}
+
 {%- if cookiecutter.mail_service == 'Mailgun' %}
 django-anymail[mailgun]==10.3  # https://github.com/anymail/django-anymail
 {%- elif cookiecutter.mail_service == 'Amazon SES' %}

@@ -64,16 +64,6 @@ postgresql_version:
     2. 15
     3. 14
 
-cloud_provider:
-    Select a cloud provider for static & media files. The choices are:
-
-    1. AWS_
-    2. GCP_
-    3. Azure_
-    4. None
-
-    If you choose no cloud provider and docker, the production stack will serve the media files via an nginx Docker service. Without Docker, the media files won't work.
-
 mail_service:
     Select an email service that Django-Anymail provides
 
@@ -114,10 +104,6 @@ use_sentry:
 
 use_whitenoise:
     Indicates whether the project should be configured to use WhiteNoise_.
-
-use_heroku:
-    Indicates whether the project should be configured so as to be deployable
-    to Heroku_.
 
 keep_local_envs_in_vcs:
     Indicates whether the project's ``.envs/.local/`` should be kept in VCS

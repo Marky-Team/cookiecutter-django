@@ -7,7 +7,7 @@ services:
   django: &django
     build:
       context: .
-      dockerfile: ./compose/local/django/Dockerfile
+      dockerfile: compose/django/Dockerfile
     image: {{ cookiecutter.project_slug }}_local_django
     container_name: {{ cookiecutter.project_slug }}_local_django
     depends_on:
@@ -33,7 +33,7 @@ services:
       POSTGRES_PASSWORD: "!!!SET POSTGRES_PASSWORD!!!"
     ports:
       - '8000:8000'
-    command: /start
+    command: {%- if cookiecutter.use_async == 'y' %} uvicorn config.asgi:application --host 0.0.0.0 --reload --reload-include '*.html'{%- else %} python manage.py runserver_plus 0.0.0.0:8000{%- endif %}
 
   postgres:
     build:
@@ -57,7 +57,7 @@ services:
     container_name: {{ cookiecutter.project_slug }}_local_docs
     build:
       context: .
-      dockerfile: ./compose/local/docs/Dockerfile
+      dockerfile: compose/docs/Dockerfile
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
@@ -125,7 +125,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: ./compose/local/node/Dockerfile
+      dockerfile: compose/node/Dockerfile
     image: {{ cookiecutter.project_slug }}_local_node
     container_name: {{ cookiecutter.project_slug }}_local_node
     depends_on:

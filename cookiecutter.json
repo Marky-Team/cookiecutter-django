@@ -16,7 +16,6 @@
   "windows": "n",
   "editor": ["None", "PyCharm", "VS Code"],
   "postgresql_version": ["16", "15", "14"],
-  "cloud_provider": ["AWS", "GCP", "Azure", "None"],
   "mail_service": [
     "Mailgun",
     "Amazon SES",
@@ -35,7 +34,6 @@
   "use_mailpit": "n",
   "use_sentry": "n",
   "use_whitenoise": "n",
-  "use_heroku": "n",
   "keep_local_envs_in_vcs": "y",
   "debug": "n"
 }

@@ -78,13 +78,6 @@ def remove_utility_files():
     shutil.rmtree("utility")
 
 
-def remove_heroku_files():
-    file_names = ["Procfile", "runtime.txt", "requirements.txt"]
-    for file_name in file_names:
-        os.remove(file_name)
-    shutil.rmtree("bin")
-
-
 def remove_sass_files():
     shutil.rmtree(os.path.join("{{cookiecutter.project_slug}}", "static", "sass"))
 
@@ -275,11 +268,7 @@ def remove_celery_compose_dirs():
 
 
 def remove_node_dockerfile():
-    shutil.rmtree(os.path.join("compose", "local", "node"))
-
-
-def remove_aws_dockerfile():
-    shutil.rmtree(os.path.join("compose", "production", "aws"))
+    shutil.rmtree(os.path.join("compose", "node"))
 
 
 def remove_drf_starter_files():
@@ -303,12 +292,6 @@ def main():
         remove_pycharm_files()
 
     remove_utility_files()
-
-    if "{{ cookiecutter.cloud_provider}}" != "AWS":
-        remove_aws_dockerfile()
-
-    if "{{ cookiecutter.use_heroku }}".lower() == "n":
-        remove_heroku_files()
 
     append_to_gitignore_file(".env")
     append_to_gitignore_file(".envs/*")

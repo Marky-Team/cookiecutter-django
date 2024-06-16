@@ -133,11 +133,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     4 - 13
     5 - 12
     Choose from 1, 2, 3, 4, 5 [1]: 1
-    Select cloud_provider:
-    1 - AWS
-    2 - GCP
-    3 - None
-    Choose from 1, 2, 3 [1]: 1
     Select mail_service:
     1 - Mailgun
     2 - Amazon SES
@@ -161,7 +156,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     use_mailpit [n]: n
     use_sentry [n]: y
     use_whitenoise [n]: n
-    use_heroku [n]: y
     keep_local_envs_in_vcs [y]: y
     debug [n]: n
 
