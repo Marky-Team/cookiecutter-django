@@ -90,7 +90,6 @@ Please check [cookiecutter-django Docker documentation](http://cookiecutter-djan
 With Mailpit running, to view messages that are sent by your application, open your browser and go to `http://127.0.0.1:8025`
 
 {%- endif %}
-{%- if cookiecutter.use_sentry == "y" %}
 
 ### Sentry
 
@@ -98,7 +97,6 @@ Sentry is an error logging aggregator service. You can sign up for a free accoun
 The system is set up with reasonable defaults, including 404 logging and integration with the WSGI application.
 
 You must set the DSN url in production.
-{%- endif %}
 
 ## Deployment
 

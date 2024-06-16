@@ -154,7 +154,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     Choose from 1, 2, 3, 4 [1]: 1
     use_celery [n]: y
     use_mailpit [n]: n
-    use_sentry [n]: y
     use_whitenoise [n]: n
     debug [n]: n
 
