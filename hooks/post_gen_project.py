@@ -49,6 +49,7 @@ def remove_gplv3_files():
 def remove_custom_user_manager_files():
     os.remove(
         os.path.join(
+            "app",
             "{{cookiecutter.project_slug}}",
             "users",
             "managers.py",
@@ -56,6 +57,7 @@ def remove_custom_user_manager_files():
     )
     os.remove(
         os.path.join(
+            "app",
             "{{cookiecutter.project_slug}}",
             "users",
             "tests",
@@ -79,7 +81,7 @@ def remove_utility_files():
 
 
 def remove_sass_files():
-    shutil.rmtree(os.path.join("{{cookiecutter.project_slug}}", "static", "sass"))
+    shutil.rmtree(os.path.join("app", "{{cookiecutter.project_slug}}", "static", "sass"))
 
 
 def remove_gulp_files():
@@ -194,9 +196,9 @@ def remove_prettier_pre_commit():
 
 def remove_celery_files():
     file_names = [
-        os.path.join("config", "celery_app.py"),
-        os.path.join("{{ cookiecutter.project_slug }}", "users", "tasks.py"),
-        os.path.join("{{ cookiecutter.project_slug }}", "users", "tests", "test_tasks.py"),
+        os.path.join("app", "config", "celery_app.py"),
+        os.path.join("app", "{{ cookiecutter.project_slug }}", "users", "tasks.py"),
+        os.path.join("app", "{{ cookiecutter.project_slug }}", "users", "tests", "test_tasks.py"),
     ]
     for file_name in file_names:
         os.remove(file_name)
@@ -204,8 +206,8 @@ def remove_celery_files():
 
 def remove_async_files():
     file_names = [
-        os.path.join("config", "asgi.py"),
-        os.path.join("config", "websocket.py"),
+        os.path.join("app", "config", "asgi.py"),
+        os.path.join("app", "config", "websocket.py"),
     ]
     for file_name in file_names:
         os.remove(file_name)
@@ -272,11 +274,11 @@ def remove_node_dockerfile():
 
 
 def remove_drf_starter_files():
-    os.remove(os.path.join("config", "api_router.py"))
-    shutil.rmtree(os.path.join("{{cookiecutter.project_slug}}", "users", "api"))
-    os.remove(os.path.join("{{cookiecutter.project_slug}}", "users", "tests", "test_drf_urls.py"))
-    os.remove(os.path.join("{{cookiecutter.project_slug}}", "users", "tests", "test_drf_views.py"))
-    os.remove(os.path.join("{{cookiecutter.project_slug}}", "users", "tests", "test_swagger.py"))
+    os.remove(os.path.join("app", "config", "api_router.py"))
+    shutil.rmtree(os.path.join("app", "{{cookiecutter.project_slug}}", "users", "api"))
+    os.remove(os.path.join("app", "{{cookiecutter.project_slug}}", "users", "tests", "test_drf_urls.py"))
+    os.remove(os.path.join("app", "{{cookiecutter.project_slug}}", "users", "tests", "test_drf_views.py"))
+    os.remove(os.path.join("app", "{{cookiecutter.project_slug}}", "users", "tests", "test_swagger.py"))
 
 
 def main():

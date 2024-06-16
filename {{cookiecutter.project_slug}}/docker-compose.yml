@@ -60,8 +60,7 @@ services:
       dockerfile: compose/docs/Dockerfile
     volumes:
       - ./docs:/docs:z
-      - ./config:/app/config:z
-      - ./{{ cookiecutter.project_slug }}:/app/{{ cookiecutter.project_slug }}:z
+      - ./app:/app:z
     ports:
       - '9000:9000'
     command: /start-docs
