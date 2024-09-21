@@ -105,7 +105,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     project_name [My Awesome Project]: Reddit Clone
     project_slug [reddit_clone]: reddit
     description [Behold My Awesome Project!]: A reddit clone.
-    author_name [Daniel Roy Greenfeld]: Daniel Greenfeld
     domain_name [example.com]: myreddit.com
     email [daniel-greenfeld@example.com]: pydanny@gmail.com
     version [0.1.0]: 0.0.1
@@ -127,7 +126,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     2 - PyCharm
     3 - VS Code
     Choose from 1, 2, 3 [1]: 1
-    use_docker [n]: n
     Select postgresql_version:
     1 - 16
     2 - 15
@@ -135,11 +133,6 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     4 - 13
     5 - 12
     Choose from 1, 2, 3, 4, 5 [1]: 1
-    Select cloud_provider:
-    1 - AWS
-    2 - GCP
-    3 - None
-    Choose from 1, 2, 3 [1]: 1
     Select mail_service:
     1 - Mailgun
     2 - Amazon SES
@@ -161,16 +154,7 @@ Answer the prompts with your own desired [options](http://cookiecutter-django.re
     Choose from 1, 2, 3, 4 [1]: 1
     use_celery [n]: y
     use_mailpit [n]: n
-    use_sentry [n]: y
     use_whitenoise [n]: n
-    use_heroku [n]: y
-    Select ci_tool:
-    1 - None
-    2 - Travis
-    3 - Gitlab
-    4 - Github
-    Choose from 1, 2, 3, 4 [1]: 4
-    keep_local_envs_in_vcs [y]: y
     debug [n]: n
 
 Enter the project and take a look around:

@@ -18,9 +18,6 @@ project_slug:
 description:
     Describes your project and gets used in places like ``README.rst`` and such.
 
-author_name:
-    This is you! The value goes into places like ``LICENSE`` and such.
-
 email:
     The email address you want to identify yourself in the project.
 
@@ -60,27 +57,12 @@ editor:
     2. PyCharm_
     3. `VS Code`_
 
-use_docker:
-    Indicates whether the project should be configured to use Docker_, `Docker Compose`_ and `devcontainer`_.
-
 postgresql_version:
     Select a PostgreSQL_ version to use. The choices are:
 
     1. 16
     2. 15
     3. 14
-    4. 13
-    5. 12
-
-cloud_provider:
-    Select a cloud provider for static & media files. The choices are:
-
-    1. AWS_
-    2. GCP_
-    3. Azure_
-    4. None
-
-    If you choose no cloud provider and docker, the production stack will serve the media files via an nginx Docker service. Without Docker, the media files won't work.
 
 mail_service:
     Select an email service that Django-Anymail provides
@@ -117,30 +99,8 @@ use_celery:
 use_mailpit:
     Indicates whether the project should be configured to use Mailpit_.
 
-use_sentry:
-    Indicates whether the project should be configured to use Sentry_.
-
 use_whitenoise:
     Indicates whether the project should be configured to use WhiteNoise_.
-
-use_heroku:
-    Indicates whether the project should be configured so as to be deployable
-    to Heroku_.
-
-ci_tool:
-    Select a CI tool for running tests. The choices are:
-
-    1. None
-    2. `Travis CI`_
-    3. `Gitlab CI`_
-    4. `Github Actions`_
-    5. `Drone CI`_
-
-keep_local_envs_in_vcs:
-    Indicates whether the project's ``.envs/.local/`` should be kept in VCS
-    (comes in handy when working in teams where local environment reproducibility
-    is strongly encouraged).
-    Note: .env(s) are only utilized when Docker Compose and/or Heroku support is enabled.
 
 debug:
     Indicates whether the project should be configured for debugging.

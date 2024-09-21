@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="django" name="Django">
       <configuration>
-        <option name="rootFolder" value="$MODULE_DIR$" />
+        <option name="rootFolder" value="$MODULE_DIR$/app" />
         <option name="settingsModule" value="config/settings/local.py" />
         <option name="manageScript" value="$MODULE_DIR$/manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
@@ -18,7 +18,9 @@
       <excludeFolder url="file://$MODULE_DIR$/node_modules" />
     </content>
     {% else %}
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
+    </content>
     {% endif %}
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

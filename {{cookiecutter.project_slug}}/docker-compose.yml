@@ -4,12 +4,13 @@ volumes:
   {% if cookiecutter.use_celery == 'y' %}{{ cookiecutter.project_slug }}_local_redis_data: {}{% endif %}
 
 services:
-  django:{% if cookiecutter.use_celery == 'y' %} &django{% endif %}
+  django: &django
     build:
       context: .
-      dockerfile: ./compose/local/django/Dockerfile
+      dockerfile: compose/django/Dockerfile
     image: {{ cookiecutter.project_slug }}_local_django
     container_name: {{ cookiecutter.project_slug }}_local_django
+    working_dir: /app/
     depends_on:
       - postgres
       {%- if cookiecutter.use_celery == 'y' %}
@@ -19,13 +20,22 @@ services:
       - mailpit
       {%- endif %}
     volumes:
-      - .:/app:z
-    env_file:
-      - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
+      - ./app:/app:z
+    environment:
+      IPYTHONDIR: "/app/.ipython"
+      DJANGO_SECRET_KEY: "LOCAL_INSECURE_SECRET_KEY"{%- if cookiecutter.use_celery == 'y' %}
+      REDIS_URL: "redis://redis:6379/0"
+      CELERY_BROKER_URL: "redis://redis:6379/0"
+      CELERY_FLOWER_USER: "!!!SET CELERY_FLOWER_USER!!!"
+      CELERY_FLOWER_PASSWORD: "!!!SET CELERY_FLOWER_PASSWORD!!!"{%- endif %}
+      POSTGRES_HOST: "postgres"
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: "{{ cookiecutter.project_slug }}"
+      POSTGRES_USER: "!!!SET POSTGRES_USER!!!"
+      POSTGRES_PASSWORD: "!!!SET POSTGRES_PASSWORD!!!"
     ports:
       - '8000:8000'
-    command: /start
+    command: {%- if cookiecutter.use_async == 'y' %} uvicorn config.asgi:application --host 0.0.0.0 --reload --reload-include '*.html'{%- else %} python manage.py runserver_plus 0.0.0.0:8000{%- endif %}
 
   postgres:
     build:
@@ -36,8 +46,30 @@ services:
     volumes:
       - {{ cookiecutter.project_slug }}_local_postgres_data:/var/lib/postgresql/data
       - {{ cookiecutter.project_slug }}_local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
+    environment:
+      POSTGRES_HOST: "postgres"
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: "{{ cookiecutter.project_slug }}"
+      POSTGRES_USER: "!!!SET POSTGRES_USER!!!"
+      POSTGRES_PASSWORD: "!!!SET POSTGRES_PASSWORD!!!"
+
+  docs:
+    <<: *django
+    image: {{ cookiecutter.project_slug }}_local_docs
+    container_name: {{ cookiecutter.project_slug }}_local_docs
+    build:
+      context: .
+      dockerfile: compose/docs/Dockerfile
+    volumes:
+      - ./docs:/docs:z
+      - ./app:/app:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
+
+  format:
+    <<: *django
+    command: black .
 
   {%- if cookiecutter.use_mailpit == 'y' %}
 
@@ -98,7 +130,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: ./compose/local/node/Dockerfile
+      dockerfile: compose/node/Dockerfile
     image: {{ cookiecutter.project_slug }}_local_node
     container_name: {{ cookiecutter.project_slug }}_local_node
     depends_on:

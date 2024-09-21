@@ -8,18 +8,10 @@ COPY ./package.json ${APP_HOME}
 RUN npm install && npm cache clean --force
 COPY . ${APP_HOME}
 {%- if cookiecutter.frontend_pipeline == 'Webpack' and cookiecutter.use_whitenoise == 'n' %}
-{%- if cookiecutter.cloud_provider == 'AWS' %}
 ARG DJANGO_AWS_STORAGE_BUCKET_NAME
 ENV DJANGO_AWS_STORAGE_BUCKET_NAME=${DJANGO_AWS_STORAGE_BUCKET_NAME}
 ARG DJANGO_AWS_S3_CUSTOM_DOMAIN
 ENV DJANGO_AWS_S3_CUSTOM_DOMAIN=${DJANGO_AWS_S3_CUSTOM_DOMAIN}
-{%- elif cookiecutter.cloud_provider == 'GCP' %}
-ARG DJANGO_GCP_STORAGE_BUCKET_NAME
-ENV DJANGO_GCP_STORAGE_BUCKET_NAME=${DJANGO_GCP_STORAGE_BUCKET_NAME}
-{%- elif cookiecutter.cloud_provider == 'Azure' %}
-ARG DJANGO_AZURE_ACCOUNT_NAME
-ENV DJANGO_AZURE_ACCOUNT_NAME=${DJANGO_AZURE_ACCOUNT_NAME}
-{%- endif %}
 {%- endif %}
 RUN npm run build
 

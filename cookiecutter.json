@@ -2,24 +2,20 @@
   "project_name": "My Awesome Project",
   "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "description": "Behold My Awesome Project!",
-  "author_name": "Daniel Roy Greenfeld",
-  "domain_name": "example.com",
-  "email": "{{ cookiecutter.author_name.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.domain_name.lower() | trim() }}",
+  "domain_name": "your-service.mymarky.net",
   "version": "0.1.0",
   "open_source_license": [
+    "Not open source",
     "MIT",
     "BSD",
     "GPLv3",
-    "Apache Software License 2.0",
-    "Not open source"
+    "Apache Software License 2.0"
   ],
   "username_type": ["username", "email"],
   "timezone": "UTC",
   "windows": "n",
   "editor": ["None", "PyCharm", "VS Code"],
-  "use_docker": "n",
-  "postgresql_version": ["16", "15", "14", "13", "12"],
-  "cloud_provider": ["AWS", "GCP", "Azure", "None"],
+  "postgresql_version": ["16", "15", "14"],
   "mail_service": [
     "Mailgun",
     "Amazon SES",
@@ -36,10 +32,5 @@
   "frontend_pipeline": ["None", "Django Compressor", "Gulp", "Webpack"],
   "use_celery": "n",
   "use_mailpit": "n",
-  "use_sentry": "n",
-  "use_whitenoise": "n",
-  "use_heroku": "n",
-  "ci_tool": ["None", "Travis", "Gitlab", "Github", "Drone"],
-  "keep_local_envs_in_vcs": "y",
-  "debug": "n"
+  "use_whitenoise": "n"
 }
