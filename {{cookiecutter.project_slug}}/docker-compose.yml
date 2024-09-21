@@ -67,10 +67,6 @@ services:
       - '9000:9000'
     command: /start-docs
 
-  format:
-    <<: *django
-    command: black .
-
   {%- if cookiecutter.use_mailpit == 'y' %}
 
   mailpit:
