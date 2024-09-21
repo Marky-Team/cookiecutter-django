@@ -265,8 +265,7 @@ def append_to_gitignore_file(ignored_line):
 
 
 def remove_celery_compose_dirs():
-    shutil.rmtree(os.path.join("compose", "local", "django", "celery"))
-    shutil.rmtree(os.path.join("compose", "production", "django", "celery"))
+    shutil.rmtree(os.path.join("compose", "django", "celery"))
 
 
 def remove_node_dockerfile():
