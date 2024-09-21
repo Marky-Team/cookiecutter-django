@@ -81,16 +81,6 @@ updates:
     schedule:
       interval: 'daily'
 
-{%- if cookiecutter.cloud_provider == 'None' %}
-
-  - package-ecosystem: 'docker'
-    # Look for a `Dockerfile` in the `compose/production/nginx` directory
-    directory: 'compose/production/nginx/'
-    # Every weekday
-    schedule:
-      interval: 'daily'
-{%- endif %}
-
   # Enable version updates for Python/Pip - Production
   - package-ecosystem: 'pip'
     # Look for a `requirements.txt` in the `root` directory
