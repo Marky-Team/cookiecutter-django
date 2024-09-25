@@ -40,7 +40,7 @@ docker compose -f docker-compose.yml run \
   -e DJANGO_ADMIN_URL=x \
   -e MAILGUN_API_KEY=x \
   -e MAILGUN_DOMAIN=x \
-  django python manage.py check --settings=config.settings.production --deploy --database default --fail-level WARNING
+  django python manage.py check --settings=config.settings.combined --deploy --database default --fail-level WARNING
 
 # Generate the HTML for the documentation
 docker compose -f docker-compose.docs.yml run docs make html

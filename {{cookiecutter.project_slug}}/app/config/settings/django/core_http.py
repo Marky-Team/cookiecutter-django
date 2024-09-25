@@ -9,7 +9,7 @@ ALLOWED_HOSTS = env.list(
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
-    "config.middleware.HealthCheckMiddleware",
+    "common_template.middleware.HealthCheckMiddleware",
     "django.middleware.security.SecurityMiddleware",
 {%- if cookiecutter.use_drf == 'y' %}
     "corsheaders.middleware.CorsMiddleware",
@@ -25,7 +25,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
-    "config.middleware.InjectBusinessMiddleware",
+    "common_template.middleware.InjectBusinessMiddleware",
 ]
 if ENABLE_DEBUG_TOOLBAR:
     # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#middleware

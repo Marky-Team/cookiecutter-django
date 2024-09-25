@@ -22,6 +22,7 @@ services:
     environment:
       IPYTHONDIR: "/app/.ipython"
       DJANGO_SECRET_KEY: "LOCAL_INSECURE_SECRET_KEY"
+      ENABLE_SENTRY: "False"
       REDIS_URL: "redis://redis:6379/0"{%- if cookiecutter.use_celery == 'y' %}
       CELERY_BROKER_URL: "redis://redis:6379/0"
       CELERY_FLOWER_USER: "!!!SET CELERY_FLOWER_USER!!!"
