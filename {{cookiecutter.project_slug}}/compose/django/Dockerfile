@@ -86,6 +86,16 @@ RUN chmod +x /start-flower
 # copy application code to WORKDIR
 COPY ./app/ ${APP_HOME}
 
-RUN python manage.py collectstatic
+# Must set all required env variables to get Django to start up even though
+# collectstatic doesn't need any of them. :(
+RUN REDIS_URL=  \
+    POSTGRES_DB=  \
+    POSTGRES_USER=  \
+    POSTGRES_PASSWORD=  \
+    POSTGRES_HOST=  \
+    POSTGRES_PORT=  \
+    DJANGO_SECRET_KEY=  \
+    SENTRY_DSN=  \
+    python manage.py collectstatic
 
 ENTRYPOINT ["/entrypoint"]
