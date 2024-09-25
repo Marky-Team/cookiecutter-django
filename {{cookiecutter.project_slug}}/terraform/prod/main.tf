@@ -21,7 +21,7 @@ module "prod" {
     AWS_DEFAULT_REGION : "us-east-1"
     DJANGO_ACCOUNT_ALLOW_REGISTRATION : "False",
     DJANGO_ADMIN_URL : "admin/",
-    DJANGO_ALLOWED_HOSTS : "backend.mymarky.net"
+    DJANGO_ALLOWED_HOSTS : "{{cookiecutter.domain_name}}"
     DJANGO_SETTINGS_MODULE : "config.settings.combined",
     DJANGO_SECURE_SSL_REDIRECT : "True",
     MEDIA_SERVICE_BASE_URL : "https://{{cookiecutter.domain_name}}",
