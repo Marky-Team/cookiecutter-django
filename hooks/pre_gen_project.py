@@ -25,10 +25,10 @@ SUCCESS = "\x1b[1;32m [SUCCESS]: "
 {{ cookiecutter.update({ "domain_name": cookiecutter.domain_name | trim }) }}
 """
 
-project_slug = "{{ cookiecutter.project_slug }}"
-if hasattr(project_slug, "isidentifier"):
-    assert project_slug.isidentifier(), "'{}' project slug is not a valid Python identifier.".format(project_slug)
+python_package_name = "{{ cookiecutter.python_package_name }}"
+if hasattr(python_package_name, "isidentifier"):
+    assert python_package_name.isidentifier(), "'{}' project slug is not a valid Python identifier.".format(python_package_name)
 
-assert project_slug == project_slug.lower(), "'{}' project slug should be all lowercase".format(project_slug)
+assert python_package_name == python_package_name.lower(), "'{}' project slug should be all lowercase".format(python_package_name)
 
 assert "\\" not in "MyMarky, Incorporated", "Don't include backslashes in author name."
