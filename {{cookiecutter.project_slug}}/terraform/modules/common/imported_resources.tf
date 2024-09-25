@@ -1,5 +1,5 @@
 data "aws_ecr_repository" "repo" {
-  name = "marky-django"
+  name = "{{cookiecutter.project_slug}}"
 }
 
 data "aws_ecs_cluster" "prod" {
