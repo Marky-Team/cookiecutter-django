@@ -52,10 +52,6 @@ locals {
           value : join(",", var.cors_allowed_origins)
         },
         {
-          name : "DYNAMO_DB_TABLE_POSTFIX",
-          value : var.dynamo_db_table_postfix,
-        },
-        {
           name : "SENTRY_ENVIRONMENT",
           value : local.sentry_environment_name,
         },
