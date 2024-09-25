@@ -1,5 +1,5 @@
 {
-  "name": "{{cookiecutter.project_slug}}",
+  "name": "{{cookiecutter.python_package_name}}",
   "version": "{{ cookiecutter.version }}",
   "devDependencies": {
     "@babel/core": "^7.16.5",

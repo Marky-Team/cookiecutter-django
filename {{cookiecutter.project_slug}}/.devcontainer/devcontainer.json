@@ -1,6 +1,6 @@
 // For format details, see https://containers.dev/implementors/json_reference/
 {
-    "name": "{{cookiecutter.project_slug}}_dev",
+    "name": "{{cookiecutter.python_package_name}}_dev",
     "dockerComposeFile": [
         "../docker-compose.yml"
     ],

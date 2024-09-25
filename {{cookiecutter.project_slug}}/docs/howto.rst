@@ -4,7 +4,7 @@ How To - Project Documentation
 Get Started
 ----------------------------------------------------------------------
 
-Documentation can be written as rst files in `{{cookiecutter.project_slug}}/docs`.
+Documentation can be written as rst files in `{{cookiecutter.python_package_name}}/docs`.
 
 To build and serve docs, use the commands::
 

@@ -10,7 +10,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=_source
 set BUILDDIR=_build
-set APP=..\{{cookiecutter.project_slug}}
+set APP=..\{{cookiecutter.python_package_name}}
 
 if "%1" == "" goto help
 

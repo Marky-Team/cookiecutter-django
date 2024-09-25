@@ -25,7 +25,7 @@ repos:
     hooks:
       - id: prettier
         args: ['--tab-width', '2', '--single-quote']
-        exclude: 'app/{{cookiecutter.project_slug}}/templates/'
+        exclude: 'app/{{cookiecutter.python_package_name}}/templates/'
 
   - repo: https://github.com/adamchainz/django-upgrade
     rev: '1.21.0'

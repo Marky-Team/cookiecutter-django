@@ -12,7 +12,7 @@ norecursedirs = ["node_modules"]
 
 # ==== Coverage ====
 [tool.coverage.run]
-include = ["{{cookiecutter.project_slug}}/**"]
+include = ["{{cookiecutter.python_package_name}}/**"]
 omit = ["*/migrations/*", "*/tests/*"]
 plugins = ["django_coverage_plugin"]
 

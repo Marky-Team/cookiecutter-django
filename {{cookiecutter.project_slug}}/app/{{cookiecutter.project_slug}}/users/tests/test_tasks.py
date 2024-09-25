@@ -1,8 +1,8 @@
 import pytest
 from celery.result import EagerResult
 
-from {{ cookiecutter.project_slug }}.users.tasks import get_users_count
-from {{ cookiecutter.project_slug }}.users.tests.factories import UserFactory
+from {{cookiecutter.python_package_name}}.users.tasks import get_users_count
+from {{cookiecutter.python_package_name}}.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 

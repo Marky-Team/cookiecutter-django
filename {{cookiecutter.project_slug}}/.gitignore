@@ -329,7 +329,7 @@ tags
 dump.rdb
 
 ### Project template
-{{ cookiecutter.project_slug }}/media/
+{{cookiecutter.python_package_name}}/media/
 
 .pytest_cache/
 
@@ -343,6 +343,6 @@ vendors.js
 *.min.js.map
 {%- endif %}
 {%- if cookiecutter.frontend_pipeline == 'Webpack' %}
-{{ cookiecutter.project_slug }}/static/webpack_bundles/
+{{cookiecutter.python_package_name}}/static/webpack_bundles/
 webpack-stats.json
 {%- endif %}

@@ -5,9 +5,9 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UsersConfig(AppConfig):
-    name = "{{ cookiecutter.project_slug }}.users"
+    name = "{{cookiecutter.python_package_name}}.users"
     verbose_name = _("Users")
 
     def ready(self):
         with contextlib.suppress(ImportError):
-            import {{ cookiecutter.project_slug }}.users.signals  # noqa: F401
+            import {{cookiecutter.python_package_name}}.users.signals  # noqa: F401
