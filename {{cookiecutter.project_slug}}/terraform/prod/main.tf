@@ -8,7 +8,7 @@ module "prod" {
   app_name            = "{{cookiecutter.project_slug}}"
   stage_name          = "prod"
   bastion_sg          = module.common.bastion_sg
-  domain_names        = ["{{domain_name}}"]
+  domain_names        = ["{{cookiecutter.domain_name}}"]
   ecs_cluster         = module.common.prod_ecs_cluster
   ecs_security_group  = module.common.ecs_prod_sg
   image_repository    = module.common.repo
@@ -24,13 +24,13 @@ module "prod" {
     DJANGO_ALLOWED_HOSTS : "backend.mymarky.net"
     DJANGO_SETTINGS_MODULE : "config.settings.combined",
     DJANGO_SECURE_SSL_REDIRECT : "True",
-    MEDIA_SERVICE_BASE_URL : "https://{{domain_name}}",
+    MEDIA_SERVICE_BASE_URL : "https://{{cookiecutter.domain_name}}",
     CONN_MAX_AGE : "0"
   }
   env_secret_names = {
   }
   cors_allowed_origins = [
-    "https://{{domain_name}}",
+    "https://{{cookiecutter.domain_name}}",
   ]
   sentry_environment_name_override = "production"
   celery_worker_cpu_reservation = 256
