@@ -1,7 +1,7 @@
 volumes:
   {{cookiecutter.python_package_name}}_local_postgres_data: {}
   {{cookiecutter.python_package_name}}_local_postgres_data_backups: {}
-  {% if cookiecutter.use_celery == 'y' %}{{cookiecutter.python_package_name}}_local_redis_data: {}{% endif %}
+  {{cookiecutter.python_package_name}}_local_redis_data: {}
 
 services:
   django: &django
@@ -13,9 +13,7 @@ services:
     working_dir: /app/
     depends_on:
       - postgres
-      {%- if cookiecutter.use_celery == 'y' %}
       - redis
-      {%- endif %}
       {%- if cookiecutter.use_mailpit == 'y' %}
       - mailpit
       {%- endif %}
@@ -76,16 +74,14 @@ services:
       - "8025:8025"
 
   {%- endif %}
-  {%- if cookiecutter.use_celery == 'y' %}
 
   redis:
     image: docker.io/redis:6
     container_name: {{cookiecutter.python_package_name}}_local_redis
-    {% if cookiecutter.use_celery == 'y' %}
     volumes:
       - {{cookiecutter.python_package_name}}_local_redis_data:/data
-    {% endif %}
 
+  {%- if cookiecutter.use_celery == 'y' %}
   celeryworker:
     <<: *django
     image: {{cookiecutter.python_package_name}}_local_celeryworker
