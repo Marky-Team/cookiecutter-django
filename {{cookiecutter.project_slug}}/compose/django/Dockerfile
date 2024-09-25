@@ -86,4 +86,6 @@ RUN chmod +x /start-flower
 # copy application code to WORKDIR
 COPY ./app/ ${APP_HOME}
 
+RUN python manage.py collectstatic
+
 ENTRYPOINT ["/entrypoint"]
