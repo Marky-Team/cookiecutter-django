@@ -41,9 +41,9 @@ First things first.
 
 #. Create a new PostgreSQL database using createdb_: ::
 
-    $ createdb --username=postgres <project_slug>
+    $ createdb --username=postgres <python_package_name>
 
-   ``project_slug`` is what you have entered as the project_slug at the setup stage.
+   ``python_package_name`` is what you have entered as the python_package_name at the setup stage.
 
    .. note::
 
@@ -211,10 +211,10 @@ Start the Celery worker by running the following command in another terminal::
 That Celery worker should be running whenever your app is running, typically as a background process,
 so that it can pick up any tasks that get queued. Learn more from the `Celery Workers Guide`_.
 
-The project comes with a simple task for manual testing purposes, inside `<project_slug>/users/tasks.py`. To queue that task locally, start the Django shell, import the task, and call `delay()` on it::
+The project comes with a simple task for manual testing purposes, inside `<python_package_name>/users/tasks.py`. To queue that task locally, start the Django shell, import the task, and call `delay()` on it::
 
     $ python manage.py shell
-    >> from <project_slug>.users.tasks import get_users_count
+    >> from <python_package_name>.users.tasks import get_users_count
     >> get_users_count.delay()
 
 You can also use Django admin to queue up tasks, thanks to the `django-celerybeat`_ package.

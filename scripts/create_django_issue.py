@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 
 CURRENT_FILE = Path(__file__)
 ROOT = CURRENT_FILE.parents[1]
-REQUIREMENTS_DIR = ROOT / "{{cookiecutter.project_slug}}" / "requirements"
+REQUIREMENTS_DIR = ROOT / "{{cookiecutter.python_package_name}}" / "requirements"
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", None)
 GITHUB_REPO = os.getenv("GITHUB_REPOSITORY", None)
 

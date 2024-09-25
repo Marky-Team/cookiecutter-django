@@ -58,7 +58,7 @@ norecursedirs = [
   "*/static/*",
   "docs",
   "venv",
-  "*/{{cookiecutter.project_slug}}/*",
+  "*/{{cookiecutter.python_package_name}}/*",
 ]
 
 # ==== black ====
