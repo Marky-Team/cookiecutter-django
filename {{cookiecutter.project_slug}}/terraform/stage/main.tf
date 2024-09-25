@@ -29,5 +29,6 @@ module "stage" {
     DJANGO_SECURE_SSL_REDIRECT : "True",
   }
   env_secret_names = {
+    SENTRY_DSN : "sentry_dsn",
   }
 }

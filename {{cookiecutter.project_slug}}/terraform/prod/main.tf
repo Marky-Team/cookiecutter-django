@@ -28,6 +28,7 @@ module "prod" {
     CONN_MAX_AGE : "0"
   }
   env_secret_names = {
+    SENTRY_DSN : "sentry_dsn",
   }
   cors_allowed_origins = [
     "https://{{cookiecutter.domain_name}}",
