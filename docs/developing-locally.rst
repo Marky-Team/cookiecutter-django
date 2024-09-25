@@ -196,7 +196,7 @@ In production, we have Mailgun_ configured to have your back!
 Celery
 ------
 
-If the project is configured to use Celery as a task scheduler then, by default, tasks are set to run on the main thread when developing locally instead of getting sent to a broker. However, if you have Redis setup on your local machine, you can set the following in ``config/settings/local.py``::
+If the project is configured to use Celery as a task scheduler then, by default, tasks are set to run on the main thread when developing locally instead of getting sent to a broker. However, if you have Redis setup on your local machine, you can set the following in ``config/settings/combined.py``::
 
     CELERY_TASK_ALWAYS_EAGER = False
 
