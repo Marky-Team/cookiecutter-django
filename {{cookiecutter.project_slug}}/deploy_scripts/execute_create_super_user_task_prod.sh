@@ -15,6 +15,9 @@ aws ecs run-task \
           "--no-input",
           "--username", "USERNAME_REPLACE_ME!",
           "--email", "YOUR@EMAIL.HERE"
+        ],
+        "environment":[
+          {"name":"DJANGO_SUPERUSER_PASSWORD", "value":"EXAMPLE_PASSWORD"}
         ]
       }
     ]
