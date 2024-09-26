@@ -7,6 +7,8 @@ ADMINS = [("MyMarky Engineering", "engineering@mymarky.ai")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
+DEFAULT_FROM_EMAIL = "system@mymarky.net"
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 if IS_IN_TEST:
     EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
