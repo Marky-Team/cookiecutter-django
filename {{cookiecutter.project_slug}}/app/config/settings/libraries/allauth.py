@@ -19,13 +19,13 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 # https://docs.allauth.org/en/latest/account/configuration.html
-ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "{{cookiecutter.python_package_name}}.users.adapters.AccountAdapter"
 
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {"signup": "users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "{{cookiecutter.python_package_name}}.users.forms.UserSignupForm"}
 
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_ADAPTER = "users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "{{cookiecutter.python_package_name}}.users.adapters.SocialAccountAdapter"
 
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_FORMS = {"signup": "users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "{{cookiecutter.python_package_name}}.users.forms.UserSocialSignupForm"}
