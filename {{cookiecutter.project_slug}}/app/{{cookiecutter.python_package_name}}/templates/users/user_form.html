@@ -21,11 +21,11 @@
   <h1>
   {%- endraw %}
   {%- if cookiecutter.username_type == "email" %}
-    {%- raw %}
+    {%- raw -%}
     {{ user.name }}
     {%- endraw %}
   {%- else %}
-    {%- raw %}
+    {%- raw -%}
     {{ user.username }}
     {%- endraw %}
   {%- endif %}
