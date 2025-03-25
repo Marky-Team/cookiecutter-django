@@ -57,4 +57,4 @@ CELERY_TASK_STORE_EAGER_RESULT = IS_IN_TEST
 CELERY_BROKER_TRANSPORT_OPTIONS = {
     "visibility_timeout": timedelta(days=7).total_seconds(),
 }
-{% endif %}
+{% endif -%}

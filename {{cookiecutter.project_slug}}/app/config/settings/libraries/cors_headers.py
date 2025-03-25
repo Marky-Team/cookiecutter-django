@@ -10,4 +10,4 @@ CORS_ALLOW_HEADERS = (
     "baggage",
     "sentry-trace",
 )
-{% endif %}
+{% endif -%}
