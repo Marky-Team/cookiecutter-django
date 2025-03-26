@@ -35,6 +35,8 @@ INSTALLED_APPS = [
 {%- endif %}
 {%- if cookiecutter.frontend_pipeline == 'Webpack' %}
     "webpack_loader",
+{%- elif cookiecutter.frontend_pipeline == 'Django Compressor' %}
+    "compressor",
 {%- endif %}
     "django_extensions",
     # LOCAL APPS
