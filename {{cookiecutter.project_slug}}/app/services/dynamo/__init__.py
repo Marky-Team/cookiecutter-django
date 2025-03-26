@@ -103,6 +103,3 @@ def update_post_template(
     post = get_post(post_id)
     post["template"] = template
     put_post(post)
-
-
-
