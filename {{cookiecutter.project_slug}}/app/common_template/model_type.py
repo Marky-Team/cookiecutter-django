@@ -6,7 +6,6 @@ from django import forms
 from django.core import checks
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db import models
 from ulid import ULID
 
 
