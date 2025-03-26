@@ -6,6 +6,7 @@ from django import forms
 from django.core import checks
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db import models
 from ulid import ULID
 
 
@@ -200,3 +201,12 @@ def generate_mock_db_id(table_prefix: str or None = None) -> str:
     if table_prefix is None:
         table_prefix = "fake"
     return f"{table_prefix}_{ULID()}"
+
+
+class BaseDbModel(models.Model):
+    id = TablePrefixUlidPkField(table_prefix="change_me")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
