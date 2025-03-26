@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 {%- endif %}
     "django_extensions",
     # LOCAL APPS
+    "{{cookiecutter.python_package_name}}",
     "{{cookiecutter.python_package_name}}.users",
     # Your stuff: custom apps go here
 ]
