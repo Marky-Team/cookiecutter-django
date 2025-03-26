@@ -1,7 +1,7 @@
 python-slugify==8.0.4  # https://github.com/un33k/python-slugify
 Pillow==10.4.0  # https://github.com/python-pillow/Pillow
 {%- if cookiecutter.frontend_pipeline == 'Django Compressor' %}
-rcssmin==1.1.1  # https://github.com/ndparker/rcssmin
+rcssmin==1.1.2  # https://github.com/ndparker/rcssmin
 {%- endif %}
 argon2-cffi==23.1.0  # https://github.com/hynek/argon2_cffi
 {%- if cookiecutter.use_whitenoise == 'y' %}
