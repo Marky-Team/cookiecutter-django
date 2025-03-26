@@ -8,7 +8,7 @@ from services.dynamo import DynamoTableNames
 from users.tests.db_helpers import create_test_user
 
 
-def _create_dynamo_table_if_not_exists(
+def _create_dynamo_table_if_not_exists(  # noqa: PLR0913
     dynamodb: boto3.client,
     table_name: str,
     primary_key: str,

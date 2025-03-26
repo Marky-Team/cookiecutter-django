@@ -135,6 +135,8 @@ ignore = [
     "FBT001", # I don't understand the goal of this lint
     "FBT002", # I don't understand the goal of this lint
     "TID252", # Discourages using relative imports; I don't see the need to.
+    "SIM103", # Requires returning a comparison directly instead of doing an if/else;
+              # I think the if/else is more obvious what's happening
 ]
 # The fixes in extend-unsafe-fixes will require
 # provide the `--unsafe-fixes` flag when fixing.
