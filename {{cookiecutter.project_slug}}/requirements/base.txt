@@ -80,3 +80,4 @@ django-anymail~=10.3  # https://github.com/anymail/django-anymail
 requests~=2.32.3
 pydantic~=2.7.4
 simplejson~=3.19.3
+python-ulid~=3.0.0
