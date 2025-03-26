@@ -14,4 +14,7 @@ STATICFILES_DIRS = [str(APPS_DIR / "static")]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+{%- if cookiecutter.frontend_pipeline == 'Django Compressor' %}
+    "compressor.finders.CompressorFinder",
+{%- endif %}
 ]
