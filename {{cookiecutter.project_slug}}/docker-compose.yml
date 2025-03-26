@@ -24,10 +24,12 @@ services:
       REQUIRE_SECURE_CONNECTIONS: "False"
       DJANGO_SECRET_KEY: "LOCAL_INSECURE_SECRET_KEY"
       ENABLE_SENTRY: "False"
-      REDIS_URL: "redis://redis:6379/0"{%- if cookiecutter.use_celery == 'y' %}
+      REDIS_URL: "redis://redis:6379/0"
+      {% if cookiecutter.use_celery == 'y' -%}
       CELERY_BROKER_URL: "redis://redis:6379/0"
       CELERY_FLOWER_USER: "!!!SET CELERY_FLOWER_USER!!!"
-      CELERY_FLOWER_PASSWORD: "!!!SET CELERY_FLOWER_PASSWORD!!!"{%- endif %}
+      CELERY_FLOWER_PASSWORD: "!!!SET CELERY_FLOWER_PASSWORD!!!"
+      {% endif -%}
       POSTGRES_HOST: "postgres"
       POSTGRES_PORT: "5432"
       POSTGRES_DB: "{{cookiecutter.python_package_name}}"

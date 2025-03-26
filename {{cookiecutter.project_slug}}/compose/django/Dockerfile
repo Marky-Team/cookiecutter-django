@@ -96,6 +96,11 @@ RUN REDIS_URL=  \
     POSTGRES_PORT=  \
     DJANGO_SECRET_KEY=  \
     SENTRY_DSN=  \
+{%- if cookiecutter.use_celery == 'y' %}
+    CELERY_BROKER_URL= \
+    CELERY_FLOWER_USER= \
+    CELERY_FLOWER_PASSWORD= \
+{%- endif %}
     python manage.py collectstatic
 
 ENTRYPOINT ["/entrypoint"]
