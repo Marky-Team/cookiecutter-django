@@ -101,6 +101,6 @@ RUN REDIS_URL=  \
     CELERY_FLOWER_USER= \
     CELERY_FLOWER_PASSWORD= \
 {%- endif %}
-    python manage.py collectstatic
+    python manage.py collectstatic --noinput
 
 ENTRYPOINT ["/entrypoint"]
